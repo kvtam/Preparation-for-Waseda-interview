@@ -23,19 +23,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "word.h"
 
-//Set an arbitrary string size, can change this later.
-#define stringsize 20
-//Set a list size to arbitrary value
-#define listsize 100
+
 #define filename "The Linux Kernel HOWTO_ Compiling the kernel.html"
 
-//Structure to keep track of a word and how many times it appears
-typedef struct{
-    short _freqency;
-    char _word[stringsize];
 
-} word;
+
 // make the word list global for now
 word list[listsize];
 //function to remove html tags
