@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1547086994 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
