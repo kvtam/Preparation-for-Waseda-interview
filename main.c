@@ -39,6 +39,8 @@
 
 // make the word list global for now
 word list[listsize];
+//Variable for the actual number of words
+short num_of_words=0;
 //function to remove html tags
 //Preconditions: same as parseFile()
 //Postconditions: ch now holds a character not within a tag
@@ -63,12 +65,13 @@ void removeHTML(FILE *fp,char *ch)
         }
     }
 }
+//word buildWords(File *fp,)
 //Parse the file and read all relevant info into a buffer
 //Preconditions: file is opened successfully
 //Postconditions: file_pointer points to eof
 void parseFile(FILE *fp)
 {
-    char ch[2]={""};
+         char ch[2]={""};
         //Keep reading until EOF
         while(!(feof(fp)))
         {

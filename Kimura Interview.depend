@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1547090155 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\main.c
+1547175269 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<ctype.h>
 	"word.h"
 
-1547089924 c:\users\kyle tam\documents\new folder (2)\kimura interview\word.h
+1547175990 c:\users\kyle tam\documents\new folder (2)\kimura interview\word.h
+	<stdbool.h>
 
