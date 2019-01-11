@@ -3,7 +3,7 @@
     Reason: Source code for Dr. Kimura's interview
     Objective: In C count the frequency of each word in an Html file
     Created: January 8, 2019
-    Last Rev: January 9, 2019
+    Last Rev: January 10, 2019
 
 */
 /*  Notes from Jan 9: Compiles
@@ -15,7 +15,12 @@
     Code currently prints the words in the file printing a new line on a space
     Code also removes html tags
     This verifies: The characters being printed are not within html tags
-    next step make the characters into words.
+    next step: make the characters into words.
+
+    Notes from Jan 10: Compiles
+    Code prints out all characters that are either letters, returns, or spaces
+    This verifies: That everything in the console is either a letter or a space of some sort
+    next step: match cases because The != the from the code's pov
 
 
 
@@ -25,10 +30,7 @@
 #include <string.h>
 #include "word.h"
 
-
 #define filename "The Linux Kernel HOWTO_ Compiling the kernel.html"
-
-
 
 // make the word list global for now
 word list[listsize];
@@ -68,9 +70,10 @@ void parseFile(FILE *fp)
         //read single character
         fscanf(fp,"%c",ch);
         removeHTML(fp,ch);
+        if((*(ch)>64&&*(ch)<91)||(*(ch)>96&&*(ch)<123)||*(ch)==32||*(ch)==10)
         printf(ch);
-        if(*(ch)==" ")
-        printf("\n");
+       // if(*(ch)==" ")
+        //printf("\n");
         }
 
 
@@ -82,16 +85,6 @@ int main()
     FILE *file_ptr;
     file_ptr= fopen(filename,"r");
     parseFile(file_ptr);
-/*
-    char buff[20]={""};
-    fscanf(file_ptr,"%c",buff);
-    if((*buff)== '<')
-        printf("works\n");
-*/
-    // create an array of the structs containing the words and their count
 
-
-    //char a[]="Hello world!\n";
-  //  printf(buff);
     return 0;
 }
