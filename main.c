@@ -22,12 +22,17 @@
     This verifies: That everything in the console is either a letter or a space of some sort
     next step: match cases because The != the from the code's pov
 
+    update:
+    Code now prints everything in lowercase
+    This verifies: That I can match cases
+    next step: to put the words into "strings"
 
 
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "word.h"
 
 #define filename "The Linux Kernel HOWTO_ Compiling the kernel.html"
@@ -70,9 +75,11 @@ void parseFile(FILE *fp)
         //read single character
         fscanf(fp,"%c",ch);
         removeHTML(fp,ch);
-        if((*(ch)>64&&*(ch)<91)||(*(ch)>96&&*(ch)<123)||*(ch)==32||*(ch)==10)
+        if((*(ch)>64&&*(ch)<91)||(*(ch)>96&&*(ch)<123)||*(ch)==32||*(ch)==10){
+        *ch=tolower(*ch);
         printf(ch);
-       // if(*(ch)==" ")
+        }
+        //if(*(ch)==" ")
         //printf("\n");
         }
 
