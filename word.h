@@ -10,11 +10,12 @@
 //Set an arbitrary string size, can change this later.
 #define stringsize 20
 //Set a list size to arbitrary value
-#define listsize 100
+#define listsize 350
 #include <stdbool.h>
 //Structure to keep track of a word and how many times it appears
 typedef struct{
     short _freqency;
+    short _wordsize;
     char _word[stringsize];
 
 } word;

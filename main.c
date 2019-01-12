@@ -74,7 +74,7 @@ void removeHTML(FILE *fp,char *ch)
 //postcondition: it is known whether object is in list and it's location
 short inList(const word w1)
 {
-    assert(num_of_words!=listsize);//for debug, make sure list can hold everything
+    assert(num_of_words!=listsize);///for debug, make sure list can hold everything
     short temp=0;
         //iterate through the list and return if the word is in the list
         for(temp;temp<num_of_words;temp++)
@@ -112,20 +112,63 @@ void listUpdate(word w1)
 void parseFile(FILE *fp)
 {
     char ch[2]={""};
+    word w1={1,0,""};
         //Keep reading until EOF
         while(!(feof(fp)))
         {
+        assert(w1._wordsize!=stringsize);///for debug
             //read single character
             fscanf(fp,"%c",ch);
             removeHTML(fp,ch);
 
-            if((*(ch)>64&&*(ch)<91)||(*(ch)>96&&*(ch)<123)||*(ch)==32||*(ch)==10){
+     /*       if((isalpha(*ch))||isspace(*ch))
+            {
                 *ch=tolower(*ch);
-                printf(ch); //for debug
+                printf(ch); ///for debug
             }
+       */     //Check if a roman character
+            if(isalpha(*ch))//if it is throw it into lowercase
+            {
+                *ch=tolower(*ch);
+                //put it into the word object and update the size of the word
+                w1._word[w1._wordsize]=*ch;
+                w1._wordsize++;
+            }
+            //if it's not a roman char then end the word only if the temp
+            //word has something in it
+            else if(w1._wordsize)
+            {
+                //update the list with the word
+                listUpdate(w1);
+                //reset the temp word
+                word temp_word={1,0,""};
+                w1=temp_word;
+            }
+
         }
 
 
+}
+//Function to print each word and its count
+//precondition: word list is constructed
+//postcondition: words are printed to console
+void printWords(void)
+{
+    short temp=0;
+
+        for(temp;temp<num_of_words;temp++)
+        {
+            word current_word=list[temp];
+          /*  //if the
+                if(!current_word._wordsize)
+                {
+                    printf("Total unique words: %d",num_of_words);
+                    break;
+                }
+*/
+            printf("The word: \"%s\" was found %d times \n",current_word._word,current_word._freqency);
+
+        }
 }
 
 int main()
@@ -134,6 +177,6 @@ int main()
     FILE *file_ptr;
     file_ptr= fopen(filename,"r");
     parseFile(file_ptr);
-
+    printWords();
     return 0;
 }
