@@ -28,7 +28,7 @@
     next step: to put the words into "strings"
 
     Notes from Jan 11: Compiles
-    Code now has functions for dealing with word list
+    Code now puts the words in a list with their frequencies
     This verifies:
 
 */
@@ -44,30 +44,7 @@
 
 word list[listsize];// make the word list global for now
 short num_of_words=0;//Variable for the actual number of words
-//function to remove html tags
-//Preconditions: same as parseFile()
-//Postconditions: ch now holds a character not within a tag
-void removeHTML(FILE *fp,char *ch)
-{
 
-    //If the character is '<'
-    if((*ch)=='<'){
-        //read until '>'
-        while(!(feof(fp)))
-        {
-        fscanf(fp,"%c",ch);
-            if((*ch)=='>')
-            {
-                //Have to read the next char before exiting
-                fscanf(fp,"%c",ch);
-                    if((*ch)=='<')
-                        continue;
-                //else
-                break;
-            }
-        }
-    }
-}
 //check the list to see if the word is already in it
 //returns position of a word in the array or -1 if not there
 //precondition: Word object is built and is lowercase
@@ -138,6 +115,20 @@ void parseFile(FILE *fp)
             //word has something in it
             else if(w1._wordsize)
             {
+                    //Check for 's and 't
+                if((*ch)==39) //if apostrophe
+                {
+                        //read next char
+                    fscanf(fp,"%c",ch);
+                    *ch=tolower(*ch);
+                    if((*ch)=="t"||(*ch)=="s")
+                    {
+                        w1._word[w1._wordsize]="'";
+                        w1._word[w1._wordsize+1]=(*ch);
+                        w1._wordsize+=2;
+                    }
+
+                }
                 //update the list with the word
                 listUpdate(w1);
                 //reset the temp word

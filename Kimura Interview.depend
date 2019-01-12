@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1547262828 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\main.c
+1547265074 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -7,10 +7,11 @@
 	<assert.h>
 	"word.h"
 
-1547262898 c:\users\kyle tam\documents\new folder (2)\kimura interview\word.h
+1547264295 c:\users\kyle tam\documents\new folder (2)\kimura interview\word.h
 	<stdbool.h>
+	<stdio.h>
 
-1547175990 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\word.c
+1547265157 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\word.c
 	"word.h"
 	<string.h>
 

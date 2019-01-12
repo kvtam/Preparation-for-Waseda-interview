@@ -12,6 +12,7 @@
 //Set a list size to arbitrary value
 #define listsize 350
 #include <stdbool.h>
+#include <stdio.h>
 //Structure to keep track of a word and how many times it appears
 typedef struct{
     short _freqency;
@@ -21,6 +22,7 @@ typedef struct{
 } word;
 
 bool wordsAreEqual(const word w1,const word w2);
+void removeHTML(FILE *fp,char *ch);
 
 
 #endif // WORD_H_INCLUDED
