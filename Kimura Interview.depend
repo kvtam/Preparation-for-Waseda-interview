@@ -9,3 +9,7 @@
 1547175990 c:\users\kyle tam\documents\new folder (2)\kimura interview\word.h
 	<stdbool.h>
 
+1547175990 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\word.c
+	"word.h"
+	<string.h>
+

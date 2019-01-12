@@ -27,63 +27,102 @@
     This verifies: That I can match cases
     next step: to put the words into "strings"
 
+    Notes from Jan 11: Compiles
+    Code now has functions for dealing with word list
+    This verifies:
 
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <assert.h> //for debug
 #include "word.h"
 
 #define filename "The Linux Kernel HOWTO_ Compiling the kernel.html"
 
-// make the word list global for now
-word list[listsize];
-//Variable for the actual number of words
-short num_of_words=0;
+
+word list[listsize];// make the word list global for now
+short num_of_words=0;//Variable for the actual number of words
 //function to remove html tags
 //Preconditions: same as parseFile()
 //Postconditions: ch now holds a character not within a tag
 void removeHTML(FILE *fp,char *ch)
 {
 
-  //If the character is '<'
+    //If the character is '<'
     if((*ch)=='<'){
-    //read until '>'
+        //read until '>'
         while(!(feof(fp)))
         {
         fscanf(fp,"%c",ch);
             if((*ch)=='>')
             {
-            //Have to read the next char before exiting
-            fscanf(fp,"%c",ch);
-                if((*ch)=='<')
-              continue;
-            //else
-            break;
+                //Have to read the next char before exiting
+                fscanf(fp,"%c",ch);
+                    if((*ch)=='<')
+                        continue;
+                //else
+                break;
             }
         }
     }
 }
-//word buildWords(File *fp,)
+//check the list to see if the word is already in it
+//returns position of a word in the array or -1 if not there
+//precondition: Word object is built and is lowercase
+//postcondition: it is known whether object is in list and it's location
+short inList(const word w1)
+{
+    assert(num_of_words!=listsize);//for debug, make sure list can hold everything
+    short temp=0;
+        //iterate through the list and return if the word is in the list
+        for(temp;temp<num_of_words;temp++)
+        {
+            if(wordsAreEqual(w1,list[temp]))
+                return temp;
+        }
+        //only get to this point if the word is not in the list
+        return -1;
+}
+//Function to update the word list
+//precondition: word object is built and lower case
+//postcondition: word object is in the list
+void listUpdate(word w1)
+{
+    //First check if word is in the list
+    short ret =inList(w1);
+    //if not add it to the list
+    //and update the number of words in the list
+    if(ret==-1)
+    {
+        w1._freqency=1;
+        list[num_of_words]=w1;
+        num_of_words++;
+    }
+    else //word is already in the list
+    {
+        list[ret]._freqency++;
+    }
+}
+
 //Parse the file and read all relevant info into a buffer
 //Preconditions: file is opened successfully
 //Postconditions: file_pointer points to eof
 void parseFile(FILE *fp)
 {
-         char ch[2]={""};
+    char ch[2]={""};
         //Keep reading until EOF
         while(!(feof(fp)))
         {
-        //read single character
-        fscanf(fp,"%c",ch);
-        removeHTML(fp,ch);
-        if((*(ch)>64&&*(ch)<91)||(*(ch)>96&&*(ch)<123)||*(ch)==32||*(ch)==10){
-        *ch=tolower(*ch);
-        printf(ch);
-        }
-        //if(*(ch)==" ")
-        //printf("\n");
+            //read single character
+            fscanf(fp,"%c",ch);
+            removeHTML(fp,ch);
+
+            if((*(ch)>64&&*(ch)<91)||(*(ch)>96&&*(ch)<123)||*(ch)==32||*(ch)==10){
+                *ch=tolower(*ch);
+                printf(ch); //for debug
+            }
         }
 
 
