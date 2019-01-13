@@ -29,7 +29,13 @@
 
     Notes from Jan 11: Compiles
     Code now puts the words in a list with their frequencies
-    This verifies:
+    This verifies: That I can identify words and count them correctly
+    next step: figure out contractions
+
+    Notes from Jan 12: compiles
+    Code now works fully and identifies contractions
+    This verifies: identification of contraction
+    next step: make code look nicer
 
 */
 #include <stdio.h>
@@ -116,14 +122,14 @@ void parseFile(FILE *fp)
             else if(w1._wordsize)
             {
                     //Check for 's and 't
-                if((*ch)==39) //if apostrophe
+               if((*ch)==39) //if apostrophe
                 {
-                        //read next char
+                        //read next cha
                     fscanf(fp,"%c",ch);
                     *ch=tolower(*ch);
-                    if((*ch)=="t"||(*ch)=="s")
+                    if((*ch)=='t'||(*ch)=='s')
                     {
-                        w1._word[w1._wordsize]="'";
+                        w1._word[w1._wordsize]=39;
                         w1._word[w1._wordsize+1]=(*ch);
                         w1._wordsize+=2;
                     }
