@@ -42,7 +42,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <assert.h> //for debug
 #include "word.h"
 
 #define filename "The Linux Kernel HOWTO_ Compiling the kernel.html"
@@ -57,7 +56,6 @@ short num_of_words=0;//Variable for the actual number of words
 //postcondition: it is known whether object is in list and it's location
 short inList(const word w1)
 {
-    assert(num_of_words!=listsize);///for debug, make sure list can hold everything
     short temp=0;
         //iterate through the list and return if the word is in the list
         for(temp;temp<num_of_words;temp++)
@@ -99,17 +97,10 @@ void parseFile(FILE *fp)
         //Keep reading until EOF
         while(!(feof(fp)))
         {
-        assert(w1._wordsize!=stringsize);///for debug
             //read single character
             fscanf(fp,"%c",ch);
             removeHTML(fp,ch);
-
-     /*       if((isalpha(*ch))||isspace(*ch))
-            {
-                *ch=tolower(*ch);
-                printf(ch); ///for debug
-            }
-       */     //Check if a roman character
+            //Check if a roman character
             if(isalpha(*ch))//if it is throw it into lowercase
             {
                 *ch=tolower(*ch);
