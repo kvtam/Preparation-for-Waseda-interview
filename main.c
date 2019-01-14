@@ -3,7 +3,7 @@
     Reason: Source code for Dr. Kimura's interview
     Objective: In C count the frequency of each word in an Html file
     Created: January 8, 2019
-    Last Rev: January 10, 2019
+    Last Rev: January 12, 2019
 
 */
 /*  Notes from Jan 9: Compiles
