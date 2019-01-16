@@ -1,5 +1,8 @@
 # Preparation-for-Waseda-interview
 
+    The purpose of this code is to display the frequency of each word in the html file. 
+    The code outputs each word in quotes followed by the number of times it shows up in the file, followed by a newline.
+    
     Notes from Jan 9: Compiles
     Code currently prints out the whole html doc with one char per line in thee console window
     This verifies: File is opened correctly, File is being read to eof
