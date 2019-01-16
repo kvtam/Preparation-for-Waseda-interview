@@ -3,7 +3,7 @@
     Reason: Header to organize code
     Objective: In C count the frequency of each word in an Html file
     Created: January 9, 2019
-    Last Rev: January 10, 2019
+    Last Rev: January 15, 2019
 */
 #ifndef WORD_H_INCLUDED
 #define WORD_H_INCLUDED

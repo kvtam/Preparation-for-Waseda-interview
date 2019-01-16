@@ -3,7 +3,7 @@
     Reason: Source code for Dr. Kimura's interview
     Objective: In C count the frequency of each word in an Html file
     Created: January 8, 2019
-    Last Rev: January 12, 2019
+    Last Rev: January 15, 2019
 
 */
 /*  Notes from Jan 9: Compiles
@@ -115,7 +115,7 @@ void parseFile(FILE *fp)
                     //Check for 's and 't
                if((*ch)==39) //if apostrophe
                 {
-                        //read next cha
+                        //read next char
                     fscanf(fp,"%c",ch);
                     *ch=tolower(*ch);
                     if((*ch)=='t'||(*ch)=='s')
@@ -147,13 +147,6 @@ void printWords(void)
         for(temp;temp<num_of_words;temp++)
         {
             word current_word=list[temp];
-          /*  //if the
-                if(!current_word._wordsize)
-                {
-                    printf("Total unique words: %d",num_of_words);
-                    break;
-                }
-*/
             printf("The word: \"%s\" was found %d times \n",current_word._word,current_word._freqency);
 
         }
