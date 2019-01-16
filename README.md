@@ -1,8 +1,10 @@
 # Preparation-for-Waseda-interview
-/*  Notes from Jan 9: Compiles
+
+    Notes from Jan 9: Compiles
     Code currently prints out the whole html doc with one char per line in thee console window
     This verifies: File is opened correctly, File is being read to eof
     next step: remove html tags
+    
     update:
     Code currently prints the words in the file printing a new line on a space
     Code also removes html tags
@@ -24,4 +26,4 @@
     Code now works fully and identifies contractions
     This verifies: identification of contraction
     next step: make code look nicer
-*/
+
