@@ -92,6 +92,7 @@ void listUpdate(word w1)
 //Postconditions: file_pointer points to eof
 void parseFile(FILE *fp)
 {
+    //to hold the character gathered from the filestream for some reason the min size has to be 2 or else I get garbage on the output
     char ch[2]={""};
     word w1={1,0,""};
         //Keep reading until EOF
@@ -147,13 +148,6 @@ void printWords(void)
         for(temp;temp<num_of_words;temp++)
         {
             word current_word=list[temp];
-          /*  //if the
-                if(!current_word._wordsize)
-                {
-                    printf("Total unique words: %d",num_of_words);
-                    break;
-                }
-*/
             printf("The word: \"%s\" was found %d times \n",current_word._word,current_word._freqency);
 
         }
@@ -165,6 +159,7 @@ int main()
     FILE *file_ptr;
     file_ptr= fopen(filename,"r");
     parseFile(file_ptr);
+    //print function
     printWords();
     return 0;
 }
