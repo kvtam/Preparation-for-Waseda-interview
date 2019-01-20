@@ -43,13 +43,14 @@
 #include <string.h>
 #include <ctype.h>
 #include "word.h"
+#include "hashtable.h"
 
 #define filename "The Linux Kernel HOWTO_ Compiling the kernel.html"
 
-
+hashtable table;
 word list[listsize];// make the word list global for now
 short num_of_words=0;//Variable for the actual number of words
-
+/*
 //check the list to see if the word is already in it
 //returns position of a word in the array or -1 if not there
 //precondition: Word object is built and is lowercase
@@ -65,7 +66,7 @@ short inList(const word w1)
         }
         //only get to this point if the word is not in the list
         return -1;
-}
+}*/
 /*
 //Function to update the word list
 //precondition: word object is built and lower case
@@ -95,6 +96,7 @@ void parseFile(FILE *fp)
 {
     //to hold the character gathered from the filestream for some reason the min size has to be 2 or else I get garbage on the output
     char ch[2]={""};
+    short val=0;
     word w1={1,0,""};
         //Keep reading until EOF
         while(!(feof(fp)))
@@ -108,6 +110,11 @@ void parseFile(FILE *fp)
                 *ch=tolower(*ch);
                 //put it into the word object and update the size of the word
                 w1._word[w1._wordsize]=*ch;
+                //get the first letter to use as an index
+                    if(w1._wordsize==0)
+                    {
+                        val=*ch-97;
+                    }
                 w1._wordsize++;
             }
             //if it's not a roman char then end the word only if the temp
@@ -130,6 +137,8 @@ void parseFile(FILE *fp)
                 }
                 //update the list with the word
           //      listUpdate(w1);
+
+                searchnode(w1,table,val);
                 //reset the temp word
                 word temp_word={1,0,""};
                 w1=temp_word;

@@ -12,7 +12,7 @@
 //Precondition: We already know the word we are searching for
 //Postcondition: Word is in the list
 //return value 0 if not in table, else value if in table
-int searchnode(word w1,hashtable t1, char val)
+int searchnode(word w1,hashtable t1, short val)
 {
      node *nodeptr;
      *nodeptr=(t1._table[val]);

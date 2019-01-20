@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1548022059 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\main.c
+1548025211 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"word.h"
+	"hashtable.h"
 
 1548021894 c:\users\kyle tam\documents\new folder (2)\kimura interview\word.h
 	<stdbool.h>
@@ -14,10 +15,11 @@
 	"word.h"
 	<string.h>
 
-1548022011 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\hashtable.c
+1548025298 source:c:\users\kyle tam\documents\new folder (2)\kimura interview\hashtable.c
 	"hashtable.h"
 	"word.h"
+	<stdlib.h>
 
-1548021980 c:\users\kyle tam\documents\new folder (2)\kimura interview\hashtable.h
+1548025298 c:\users\kyle tam\documents\new folder (2)\kimura interview\hashtable.h
 	"word.h"
 

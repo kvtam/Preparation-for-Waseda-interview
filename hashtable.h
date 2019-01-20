@@ -19,7 +19,7 @@ typedef struct {
     node _table[26];
 } hashtable;
 //this is a lookup function for the hash table given the first letter of a word
-int searchnode(word w1, hashtable t1, char val);
+int searchnode(word w1, hashtable t1, short val);
 // insert a new node
 void insert(node n1, word w1);
 #endif // HASHTABLE_H_INCLUDED
