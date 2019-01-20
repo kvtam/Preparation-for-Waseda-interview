@@ -15,7 +15,7 @@
 #include <stdio.h>
 //Structure to keep track of a word and how many times it appears
 typedef struct{
-    short _freqency;
+
     short _wordsize;
     char _word[stringsize];
 

@@ -66,6 +66,7 @@ short inList(const word w1)
         //only get to this point if the word is not in the list
         return -1;
 }
+/*
 //Function to update the word list
 //precondition: word object is built and lower case
 //postcondition: word object is in the list
@@ -86,7 +87,7 @@ void listUpdate(word w1)
         list[ret]._freqency++;
     }
 }
-
+*/
 //Parse the file and read all relevant info into a buffer
 //Preconditions: file is opened successfully
 //Postconditions: file_pointer points to eof
@@ -128,7 +129,7 @@ void parseFile(FILE *fp)
 
                 }
                 //update the list with the word
-                listUpdate(w1);
+          //      listUpdate(w1);
                 //reset the temp word
                 word temp_word={1,0,""};
                 w1=temp_word;
@@ -148,7 +149,7 @@ void printWords(void)
         for(temp;temp<num_of_words;temp++)
         {
             word current_word=list[temp];
-            printf("The word: \"%s\" was found %d times \n",current_word._word,current_word._freqency);
+          //  printf("The word: \"%s\" was found %d times \n",current_word._word,current_word._freqency);
 
         }
 }
