@@ -48,47 +48,6 @@
 #define filename "The Linux Kernel HOWTO_ Compiling the kernel.html"
 
 hashtable table;
-word list[listsize];// make the word list global for now
-short num_of_words=0;//Variable for the actual number of words
-/*
-//check the list to see if the word is already in it
-//returns position of a word in the array or -1 if not there
-//precondition: Word object is built and is lowercase
-//postcondition: it is known whether object is in list and it's location
-short inList(const word w1)
-{
-    short temp=0;
-        //iterate through the list and return if the word is in the list
-        for(temp;temp<num_of_words;temp++)
-        {
-            if(wordsAreEqual(w1,list[temp]))
-                return temp;
-        }
-        //only get to this point if the word is not in the list
-        return -1;
-}*/
-/*
-//Function to update the word list
-//precondition: word object is built and lower case
-//postcondition: word object is in the list
-void listUpdate(word w1)
-{
-    //First check if word is in the list
-    short ret =inList(w1);
-    //if not add it to the list
-    //and update the number of words in the list
-    if(ret==-1)
-    {
-        w1._freqency=1;
-        list[num_of_words]=w1;
-        num_of_words++;
-    }
-    else //word is already in the list
-    {
-        list[ret]._freqency++;
-    }
-}
-*/
 //Parse the file and read all relevant info into a buffer
 //Preconditions: file is opened successfully
 //Postconditions: file_pointer points to eof
@@ -97,7 +56,7 @@ void parseFile(FILE *fp)
     //to hold the character gathered from the filestream for some reason the min size has to be 2 or else I get garbage on the output
     char ch[2]={""};
     short val=0;
-    word w1={1,0,""};
+    word w1={0,""};
         //Keep reading until EOF
         while(!(feof(fp)))
         {
@@ -113,7 +72,10 @@ void parseFile(FILE *fp)
                 //get the first letter to use as an index
                     if(w1._wordsize==0)
                     {
-                        val=*ch-97;
+                        ///TODO
+                        ///Code for some reason stops after one interation and only catches the 't'
+                        val=(*ch)-97;
+                        printf("debug 1 val is %d \n",val);
                     }
                 w1._wordsize++;
             }
@@ -121,6 +83,7 @@ void parseFile(FILE *fp)
             //word has something in it
             else if(w1._wordsize)
             {
+                printf("debug else entered \n");
                     //Check for 's and 't
                if((*ch)==39) //if apostrophe
                 {
@@ -139,8 +102,10 @@ void parseFile(FILE *fp)
           //      listUpdate(w1);
 
                 searchnode(w1,table,val);
+                printf(val);///debug
+                printf("\n");///debug
                 //reset the temp word
-                word temp_word={1,0,""};
+                word temp_word={0,""};
                 w1=temp_word;
             }
 
@@ -155,20 +120,17 @@ void printWords(void)
 {
     short temp=0;
 
-        for(temp;temp<num_of_words;temp++)
-        {
-            word current_word=list[temp];
-          //  printf("The word: \"%s\" was found %d times \n",current_word._word,current_word._freqency);
-
-        }
 }
 
 int main()
 {
     //File i/o
     FILE *file_ptr;
+
     file_ptr= fopen(filename,"r");
+    printf("debug 3 file open \n");
     parseFile(file_ptr);
+    printf("debug 4 file parsed\n");
     //print function
     printWords();
     return 0;
