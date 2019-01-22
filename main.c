@@ -56,6 +56,7 @@ void parseFile(FILE *fp)
     //to hold the character gathered from the filestream for some reason the min size has to be 2 or else I get garbage on the output
     char ch[2]={""};
     short val=0;
+    int ret;
     word w1={0,""};
         //Keep reading until EOF
         while(!(feof(fp)))
@@ -75,7 +76,6 @@ void parseFile(FILE *fp)
                         ///TODO
                         ///Code for some reason stops after one interation and only catches the 't'
                         val=(*ch)-97;
-                        printf("debug 1 val is %d \n",val);
                     }
                 w1._wordsize++;
             }
@@ -83,7 +83,6 @@ void parseFile(FILE *fp)
             //word has something in it
             else if(w1._wordsize)
             {
-                printf("debug else entered \n");
                     //Check for 's and 't
                if((*ch)==39) //if apostrophe
                 {
@@ -101,9 +100,7 @@ void parseFile(FILE *fp)
                 //update the list with the word
           //      listUpdate(w1);
 
-                searchnode(w1,table,val);
-                printf(val);///debug
-                printf("\n");///debug
+                ret=searchnode(w1,table,val);
                 //reset the temp word
                 word temp_word={0,""};
                 w1=temp_word;
@@ -118,6 +115,21 @@ void parseFile(FILE *fp)
 //postcondition: words are printed to console
 void printWords(void)
 {
+    int i;
+    node *nodeptr= malloc(sizeof(node));
+
+    for(i=0;i<26;i++)
+    {
+
+        *nodeptr=(table._table[i]);
+        while(NULL!=(*nodeptr)._next)
+        {
+
+            printf("The word %s appears %d times \n",(*nodeptr)._node_word._word,(*nodeptr)._freqency);
+            nodeptr=(*nodeptr)._next;
+        }
+    }
+
     short temp=0;
 
 }
@@ -128,9 +140,7 @@ int main()
     FILE *file_ptr;
 
     file_ptr= fopen(filename,"r");
-    printf("debug 3 file open \n");
     parseFile(file_ptr);
-    printf("debug 4 file parsed\n");
     //print function
     printWords();
     return 0;

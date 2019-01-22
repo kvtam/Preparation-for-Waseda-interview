@@ -15,9 +15,8 @@
 ///TODO: Change return type
 int searchnode(word w1,hashtable t1, short val)
 {
-     node *nodeptr;
+     node *nodeptr= malloc(sizeof(node));
      *nodeptr=(t1._table[val]);
-     int temp;
     //while not at the end of the list find the word
     while(NULL!=(*nodeptr)._next){
         if(wordsAreEqual(w1,(*nodeptr)._node_word))
